@@ -1,79 +1,78 @@
 # NASA-TLX-Analyzer
 
-This Python script allows the analysis and visualization of the results of the NASA-TLX (Task Load Index) questionnaire, used to measure the workload perceived by participants in different experimental conditions.
+This Python script provides a comprehensive tool for analyzing and visualizing the results of the NASA-TLX (Task Load Index) questionnaire. It's designed to measure the perceived workload of participants across different experimental conditions.
 
-- Features:
+---
 
-1. Calculation of the final TLX score, with or without the use of individual weights per dimension;
+## ✨ Features
 
-2. Interactive graphical visualization with the following graphs:
+* **Final TLX Score Calculation**: Computes the final TLX score, with or without considering individual weights for each dimension.
+* **Interactive Graphical Visualization**: Generates a variety of insightful and interactive charts:
+    * Average bars per dimension
+    * Boxplot per dimension
+    * Radar chart with a hexagonal grid (Spider Chart)
+    * Final TLX score per participant
 
-3. Average bars per dimension;
+---
 
-4. Boxplot per dimension;
+## 📋 Expected CSV File Format
 
-5. Radar chart with hexagonal grid (Spider Chart);
+For the script to work correctly, your `.csv` file must adhere to the following format.
 
-7. Final TLX per participant.
+| Participant | Condition | Mental | Physical | Temporal | Performance | Effort | Frustration | Mental\_Weight | Physical\_Weight | ... |
+| :---------- | :-------- | :----- | :------- | :------- | :---------- | :----- | :---------- | :------------- | :--------------- | :-- |
+| P1          | A         | 70     | 60       | 65       | 80          | 75     | 55          | 5              | 3                | ... |
+| P2          | B         | 50     | 40       | 60       | 70          | 60     | 45          | 4              | 2                | ... |
+| ...         | ...       | ...    | ...      | ...      | ...         | ...    | ...         | ...            | ...              | ... |
 
-Obs: Expected CSV file format
+**Important Notes:**
 
-The .csv file to be analyzed must follow the following format:
-Participant Mental Condition Physical Temporal Performance Effort Frustration Mental_Weight Physical_Weight ...
-P1 A 70 60 65 80 75 55 5 3 ...
-P2 B 50 40 60 70 60 45 4 2 ...
-... ... ... ... ... ... ... ... ... ... ...
+* The columns **`Participant`**, **`Condition`**, **`Mental`**, **`Physical`**, **`Temporal`**, **`Performance`**, **`Effort`**, and **`Frustration`** are **mandatory**.
+* The `Weight_<Dimension>` columns are **optional**. They are only used when the analysis is performed with weights.
+* Dimension scores must be on a scale of **0 to 100**.
+* Weights should be on a defined scale (e.g., 0 to 5) and represent the relative importance of each dimension for a participant.
 
-The Mental, Physical, Temporal, Performance, Effort, Frustration columns are mandatory.
+---
 
-The Weight_<Dimension> columns are optional and are only used when the analysis is performed with weights.
+## 🚀 How to Use
 
-The dimension scores must be between 0 and 100.
+Follow these steps to get started:
 
-The weights must be on a defined scale (e.g. 0 to 5), and are used to weigh the relative importance of each dimension per participant.
+1.  **Install the necessary packages:**
+    ```bash
+    pip install pandas matplotlib seaborn numpy
+    ```
 
-- How to use:
+2.  **Run the script:**
+    ```bash
+    python nasa_tlx_analyzer.py
+    ```
 
-1. Install the necessary packages:
+3.  **Follow the interactive instructions in the terminal:**
+    * Select the CSV file containing your data.
+    * Choose whether to use weights in your analysis.
+    * Select the specific graphs you wish to display.
 
-2. pip install pandas matplotlib seaborn numpy
+---
 
-3. Run the script:
+## 🎨 Visual Features
 
-python nasa_tlx_analyzer.py
+* **Dedicated Windows**: Each graph is displayed in a separate window to prevent overlapping and allow for clear comparisons.
+* **Unified Color Palette**: A consistent color scheme is used across all graphs for a cohesive look.
+* **Enhanced Titles**: Graph titles are bold and feature an enlarged font for better readability.
+* **Hexagonal Radar Chart**: The radar graph (Spider Chart) is rendered with a unique hexagonal grid for improved visual clarity.
 
-4. Follow the interactive instructions:
+---
 
-- Select the CSV file with the data;
+## ℹ️ About NASA-TLX
 
-- Choose whether to use weights;
+The **NASA Task Load Index** is a widely used, subjective assessment tool developed by the NASA Ames Research Center. It measures a person's perceived workload based on six distinct dimensions:
 
-- Choose the graphs to display.
+1.  🧠 **Mental Demand**: How much mental and perceptual activity was required?
+2.  💪 **Physical Demand**: How much physical activity was required?
+3.  ⏳ **Temporal Demand**: How much time pressure did the participant feel?
+4.  🎯 **Perceived Performance**: How successful was the participant in accomplishing the goals?
+5.  🥵 **Effort**: How hard did the participant have to work (mentally and physically)?
+6.  😤 **Frustration**: How insecure, discouraged, or irritated versus secure and content did the participant feel?
 
-Visual resources:
-
-- Graphs displayed in separate windows, without overlapping;
-
-- Unified color palette across all graphs;
-
-- Bold titles with enlarged font;
-
-- Radar graph with hexagonal grid, "Spider Chart" style.
-
-About NASA-TLX
-
-The NASA Task Load Index is a subjective instrument developed by NASA to measure workload based on six dimensions:
-
-1 - Mental Demand,
-
-2 - Physical Demand,
-
-3 - Time Demand,
-
-4 - Perceived Performance,
-
-5 - Effort,
-
-6 - Frustration.
-
-This script automates the analysis of these data, facilitating comparison between different experimental conditions.
+This script automates the analysis of this data, making it easier to interpret and compare results between different conditions.
